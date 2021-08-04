@@ -1,0 +1,24 @@
+<div class="center">
+  <h2>Lista de Produtos</h2>
+</div>
+<!-- *ngFor : repete para cada produto da lista --->
+<div *ngFor="let product of products">
+  <h3>
+    <!--  A interpolação {{ }}permite renderizar o valor da propriedade como texto. -->
+    <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+      {{ product.name }}
+    </a>
+    <!-- a âncora do nome do produto para incluir um routerLinkcom o product.idcomo parâmetro. -->
+  </h3>
+
+  <p *ngIf="product.description">
+    Descrição: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    Compartilhar
+  </button>
+  <!--  Passe o produto atual como entrada para o componente usando vinculação de propriedade. -->
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>

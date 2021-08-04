@@ -1,0 +1,4 @@
+<!-- Notifique-me que aparece se o preço do produto for superior a $ 700. -->
+<p *ngIf="product && product.price > 700">
+  <button (click)="notify.emit()">Me avise quando disponível</button>
+</p>
